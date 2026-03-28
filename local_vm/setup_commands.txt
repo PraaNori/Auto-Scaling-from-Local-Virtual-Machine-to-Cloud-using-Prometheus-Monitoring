@@ -1,1 +1,14 @@
+# Local VM Setup
+sudo apt update
+sudo apt install python3-venv
 
+# Create environment
+python3 -m venv myenv
+source myenv/bin/activate
+
+pip install flask requests
+
+# Run services
+./node_exporter
+./prometheus --config.file=prometheus.yml
+python autoscale.py
